@@ -1,0 +1,84 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 2rem;
+  gap: 2.5rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #e0fce0;
+  text-shadow: 0 0 12px rgba(0, 255, 136, 0.3);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  font-size: 0.8rem;
+  color: #556;
+  margin-top: -1.5rem;
+  letter-spacing: 0.05em;
+}
+
+.demos {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-size: 0.7rem;
+  color: #667;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.resizable {
+  resize: horizontal;
+  overflow: hidden;
+  border: 1px dashed #333;
+  padding: 0;
+  min-width: 120px;
+  max-width: 100%;
+  width: 300px;
+}
+
+.resizableHint {
+  font-size: 0.6rem;
+  color: #445;
+  font-style: italic;
+}
+
+.inputRow {
+  display: flex;
+  gap: 0.75rem;
+  align-items: stretch;
+  flex-direction: column;
+}
+
+.textInput {
+  background: #12121f;
+  border: 1px solid #2a2a4a;
+  border-radius: 6px;
+  color: #e0fce0;
+  font-family: inherit;
+  font-size: 0.9rem;
+  padding: 10px 16px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.textInput:focus {
+  border-color: #0f6;
+}
