@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import type { SmartMarqueeProps } from './types';
 import { useOverflowDetection } from './useOverflowDetection';
 import { useMarqueeAnimation } from './useMarqueeAnimation';
@@ -26,8 +26,8 @@ export function SmartMarquee({
     isHovered,
   });
 
-  const handleMouseEnter = useCallback(() => setIsHovered(true), []);
-  const handleMouseLeave = useCallback(() => setIsHovered(false), []);
+  const handleMouseEnter = () => setIsHovered(true);
+  const handleMouseLeave = () => setIsHovered(false);
 
   const textStyle: React.CSSProperties = {
     transform: `translateX(${translateX}px)`,

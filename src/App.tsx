@@ -13,6 +13,8 @@ function App() {
   const [dynamicText, setDynamicText] = useState(
     'Type here to see the marquee react to dynamic text changes...',
   );
+  const handleDynamicTextChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setDynamicText(e.target.value);
 
   return (
     <div className={styles.app}>
@@ -87,7 +89,7 @@ function App() {
               className={styles.textInput}
               type="text"
               value={dynamicText}
-              onChange={(e) => setDynamicText(e.target.value)}
+              onChange={handleDynamicTextChange}
               placeholder="Type something..."
             />
             <SmartMarquee text={dynamicText} />

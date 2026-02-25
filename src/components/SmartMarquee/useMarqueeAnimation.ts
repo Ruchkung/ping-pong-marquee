@@ -76,13 +76,13 @@ export function useMarqueeAnimation(
   const shouldAnimate = isOverflowing && (!hoverOnly || isHovered);
   const moveDuration = speed > 0 ? (overflowAmount / speed) * 1000 : 0;
 
-  // Handle overflow amount changes — reset the cycle
-  useEffect(() => {
-    if (prevOverflowRef.current !== overflowAmount && state.phase !== 'IDLE') {
+  // Handle overflow amount changes — reset the cycle during render to avoid an extra render cycle
+  if (prevOverflowRef.current !== overflowAmount) {
+    prevOverflowRef.current = overflowAmount;
+    if (state.phase !== 'IDLE') {
       dispatch({ type: 'RESET' });
     }
-    prevOverflowRef.current = overflowAmount;
-  }, [overflowAmount, state.phase]);
+  }
 
   // Handle hover leave when hoverOnly is active
   useEffect(() => {
@@ -136,7 +136,7 @@ export function useMarqueeAnimation(
         timeoutRef.current = null;
       }
     };
-  }, [state.phase, isOverflowing, shouldAnimate, overflowAmount, speed, pauseDuration, moveDuration]);
+  }, [state.phase, isOverflowing, shouldAnimate, overflowAmount, speed, pauseDuration]);
 
   return {
     translateX: state.translateX,

@@ -41,7 +41,10 @@ export function useOverflowDetection(
     observer.observe(text);
 
     return () => observer.disconnect();
-  }, [containerRef, textRef]);
+  // containerRef and textRef are stable useRef objects — their identity never changes,
+  // so [] is correct here. The ResizeObserver is set up once on mount.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return overflow;
 }
