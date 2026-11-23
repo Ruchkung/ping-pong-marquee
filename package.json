@@ -1,6 +1,6 @@
 {
   "name": "ping-pong-marquee",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Smart ping-pong marquee React component with airport departure board aesthetic",
   "keywords": [
     "animation",
