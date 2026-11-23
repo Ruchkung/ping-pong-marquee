@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import { SmartMarquee } from './components/SmartMarquee';
 import styles from './App.module.css';
 
@@ -10,6 +10,7 @@ const THAI_LONG =
 const THAI_SHORT = 'ประตู A3 — ตรงเวลา';
 
 function App() {
+  const dynamicTextId = useId();
   const [dynamicText, setDynamicText] = useState(
     'Type here to see the marquee react to dynamic text changes...',
   );
@@ -81,9 +82,12 @@ function App() {
 
         {/* 10. Dynamic text */}
         <div className={styles.section}>
-          <span className={styles.label}>Dynamic text</span>
+          <label className={styles.label} htmlFor={dynamicTextId}>
+            Dynamic text
+          </label>
           <div className={styles.inputRow}>
             <input
+              id={dynamicTextId}
               className={styles.textInput}
               type="text"
               value={dynamicText}

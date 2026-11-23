@@ -13,17 +13,21 @@ A smart ping-pong marquee React component with an airport departure board aesthe
 - **i18n-ready** — tested with Thai script (stacking marks, ascenders/descenders)
 - **Zero dependencies** — no animation libraries, just React + CSS transitions
 
-## Quick Start
+## Installation
 
 ```bash
-npm install
-npm run dev
+npm install ping-pong-marquee
 ```
+
+Requires React 18 or later (`react` and `react-dom` are peer dependencies).
 
 ## Usage
 
+Import the component and its stylesheet once (e.g. in your app entry):
+
 ```tsx
-import { SmartMarquee } from './components/SmartMarquee';
+import { SmartMarquee } from 'ping-pong-marquee';
+import 'ping-pong-marquee/style.css';
 
 // Auto-animating
 <SmartMarquee text="Flight AA-2847 — Tokyo Narita (NRT) → Los Angeles (LAX) — Gate B42" />
@@ -75,12 +79,25 @@ overflowAmount = textScrollWidth - (containerClientWidth - paddingLeft - padding
 
 This accounts for container padding so the text scrolls exactly to reveal the last character with symmetric spacing on both sides.
 
+## Development
+
+```bash
+npm install
+npm run dev          # demo app
+npm run build:lib    # library build → dist/
+npm run lint         # oxlint
+npm run format       # oxfmt
+npm run typecheck    # TypeScript 7
+npm run doctor       # react-doctor
+```
+
 ## Tech Stack
 
-- React 19 + TypeScript
-- Vite
+- React 19 + TypeScript 7
+- Vite (demo + library JS/CSS), tsdown (bundled type declarations)
 - CSS Modules
+- oxlint + oxfmt
 
 ## License
 
-MIT
+[MIT](./LICENSE)

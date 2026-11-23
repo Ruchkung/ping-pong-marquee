@@ -21,7 +21,7 @@ export default defineConfig(({ mode }) => {
       ? {
           build: {
             lib: {
-              entry: resolve(__dirname, 'src/components/SmartMarquee/index.ts'),
+              entry: resolve(import.meta.dirname, 'src/components/SmartMarquee/index.ts'),
               name: 'PingPongMarquee',
               formats: ['es', 'cjs'] as const,
               fileName: 'ping-pong-marquee',

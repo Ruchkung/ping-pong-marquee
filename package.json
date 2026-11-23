@@ -1,6 +1,6 @@
 {
   "name": "ping-pong-marquee",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Smart ping-pong marquee React component with airport departure board aesthetic",
   "keywords": [
     "animation",
@@ -13,10 +13,13 @@
     "text"
   ],
   "homepage": "https://github.com/Ruchkung/ping-pong-marquee",
+  "bugs": {
+    "url": "https://github.com/Ruchkung/ping-pong-marquee/issues"
+  },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Ruchkung/ping-pong-marquee.git"
+    "url": "git+https://github.com/Ruchkung/ping-pong-marquee.git"
   },
   "files": [
     "dist"
@@ -35,22 +38,24 @@
         "default": "./dist/ping-pong-marquee.js"
       },
       "require": {
-        "types": "./dist/index.d.ts",
+        "types": "./dist/index.d.cts",
         "default": "./dist/ping-pong-marquee.cjs"
       }
     },
-    "./style.css": "./dist/style.css"
+    "./style.css": "./dist/style.css",
+    "./package.json": "./package.json"
   },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build:lib": "vite build --mode lib && tsc -p tsconfig.lib.json",
+    "build:lib": "vite build --mode lib && tsdown",
     "lint": "oxlint",
     "preview": "vite preview",
     "prepublishOnly": "npm run build:lib",
     "typecheck": "tsc -b",
     "format": "oxfmt",
-    "format:check": "oxfmt --check"
+    "format:check": "oxfmt --check",
+    "doctor": "react-doctor --verbose --no-telemetry --no-score --no-supply-chain"
   },
   "devDependencies": {
     "@types/node": "^26.6.6",
@@ -60,7 +65,9 @@
     "oxfmt": "^0.79.0",
     "oxlint": "^1.94.0",
     "react": "^19.3.1",
+    "react-doctor": "^0.9.23",
     "react-dom": "^19.3.1",
+    "tsdown": "^0.23.7",
     "typescript": "~7.0.2",
     "vite": "^8.3.8"
   },

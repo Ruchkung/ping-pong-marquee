@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, type ReactElement } from 'react';
 import type { SmartMarqueeProps } from './types';
 import { useOverflowDetection } from './useOverflowDetection';
 import { useMarqueeAnimation } from './useMarqueeAnimation';
@@ -10,7 +10,7 @@ export function SmartMarquee({
   pauseDuration = 1000,
   hoverOnly = false,
   className,
-}: SmartMarqueeProps) {
+}: SmartMarqueeProps): ReactElement {
   const containerRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLSpanElement>(null);
   const [isHovered, setIsHovered] = useState(false);

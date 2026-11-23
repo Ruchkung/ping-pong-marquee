@@ -7,12 +7,9 @@
     "jsx": "react-jsx",
     "strict": true,
     "skipLibCheck": true,
+    "isolatedDeclarations": true,
     "declaration": true,
-    "declarationMap": true,
-    "emitDeclarationOnly": true,
-    "outDir": "./dist",
-    "rootDir": "./src/components/SmartMarquee",
-    "noEmit": false
+    "noEmit": true
   },
   "include": ["src/components/SmartMarquee"]
 }
