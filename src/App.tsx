@@ -55,9 +55,7 @@ function App() {
         {/* 6. Resizable container */}
         <div className={styles.section}>
           <span className={styles.label}>Resizable container</span>
-          <span className={styles.resizableHint}>
-            Drag the right edge to resize
-          </span>
+          <span className={styles.resizableHint}>Drag the right edge to resize</span>
           <div className={styles.resizable}>
             <SmartMarquee text={LONG_TEXT} />
           </div>

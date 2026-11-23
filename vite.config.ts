@@ -1,22 +1,13 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import dts from 'vite-plugin-dts'
-import { resolve } from 'path'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { resolve } from 'path';
 
 export default defineConfig(({ mode }) => {
-  const isLib = mode === 'lib'
+  const isLib = mode === 'lib';
 
   return {
     base: isLib ? '/' : '/ping-pong-marquee/',
-    plugins: [
-      react(),
-      ...(isLib
-        ? [dts({
-            include: ['src/components/SmartMarquee'],
-            tsconfigPath: './tsconfig.lib.json',
-          })]
-        : []),
-    ],
+    plugins: [react()],
     server: {
       host: '127.0.0.1',
       port: parseInt(process.env.PORT || '5173'),
@@ -34,6 +25,7 @@ export default defineConfig(({ mode }) => {
               name: 'PingPongMarquee',
               formats: ['es', 'cjs'] as const,
               fileName: 'ping-pong-marquee',
+              cssFileName: 'style',
             },
             rollupOptions: {
               external: ['react', 'react-dom', 'react/jsx-runtime'],
@@ -49,5 +41,5 @@ export default defineConfig(({ mode }) => {
           },
         }
       : {}),
-  }
-})
+  };
+});

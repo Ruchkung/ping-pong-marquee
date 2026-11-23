@@ -23,9 +23,7 @@ export function useOverflowDetection(
       const textWidth = text.scrollWidth;
       const style = getComputedStyle(container);
       const innerWidth =
-        container.clientWidth -
-        parseFloat(style.paddingLeft) -
-        parseFloat(style.paddingRight);
+        container.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
       const amount = textWidth - innerWidth;
       setOverflow({
         isOverflowing: amount > 0,
@@ -41,9 +39,9 @@ export function useOverflowDetection(
     observer.observe(text);
 
     return () => observer.disconnect();
-  // containerRef and textRef are stable useRef objects — their identity never changes,
-  // so [] is correct here. The ResizeObserver is set up once on mount.
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // containerRef and textRef are stable useRef objects — their identity never changes,
+    // so [] is correct here. The ResizeObserver is set up once on mount.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return overflow;

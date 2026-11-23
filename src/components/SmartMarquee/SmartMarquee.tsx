@@ -31,10 +31,7 @@ export function SmartMarquee({
 
   const textStyle: React.CSSProperties = {
     transform: `translateX(${translateX}px)`,
-    transition:
-      transitionDuration > 0
-        ? `transform ${transitionDuration}ms linear`
-        : 'none',
+    transition: transitionDuration > 0 ? `transform ${transitionDuration}ms linear` : 'none',
     willChange: isOverflowing ? 'transform' : 'auto',
   };
 

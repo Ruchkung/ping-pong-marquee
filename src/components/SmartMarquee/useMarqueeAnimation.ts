@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useRef } from 'react';
+import { useEffect, useReducer, useRef, useState } from 'react';
 import type { AnimationState } from './types';
 
 interface MarqueeAnimationConfig {
@@ -65,20 +65,19 @@ const initialState: State = {
   transitionDuration: 0,
 };
 
-export function useMarqueeAnimation(
-  config: MarqueeAnimationConfig,
-): MarqueeAnimationResult {
+export function useMarqueeAnimation(config: MarqueeAnimationConfig): MarqueeAnimationResult {
   const { isOverflowing, overflowAmount, speed, pauseDuration, hoverOnly, isHovered } = config;
   const [state, dispatch] = useReducer(reducer, initialState);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const prevOverflowRef = useRef(overflowAmount);
+  const [prevOverflow, setPrevOverflow] = useState(overflowAmount);
 
   const shouldAnimate = isOverflowing && (!hoverOnly || isHovered);
   const moveDuration = speed > 0 ? (overflowAmount / speed) * 1000 : 0;
 
-  // Handle overflow amount changes — reset the cycle during render to avoid an extra render cycle
-  if (prevOverflowRef.current !== overflowAmount) {
-    prevOverflowRef.current = overflowAmount;
+  // Handle overflow amount changes — reset the cycle during render to avoid an extra render cycle.
+  // Tracked in state (not a ref) so it's safe to read/update during render.
+  if (prevOverflow !== overflowAmount) {
+    setPrevOverflow(overflowAmount);
     if (state.phase !== 'IDLE') {
       dispatch({ type: 'RESET' });
     }
@@ -136,7 +135,7 @@ export function useMarqueeAnimation(
         timeoutRef.current = null;
       }
     };
-  }, [state.phase, isOverflowing, shouldAnimate, overflowAmount, speed, pauseDuration]);
+  }, [state.phase, isOverflowing, shouldAnimate, overflowAmount, moveDuration, pauseDuration]);
 
   return {
     translateX: state.translateX,
